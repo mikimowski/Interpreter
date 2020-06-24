@@ -1,0 +1,32 @@
+int x1 = 1;
+int x2; # default: 42
+int x3, x4;
+int x5 = 4, x6 = 2, x7;
+
+bool b1 = true;
+bool b2 = false;
+bool b3; # default: false
+
+string s1 = "s1";
+string s2; # default: "I am empty"
+
+[int] arrInt1 = [1, -2, 3];
+[int] arrInt2 = [];
+[bool] arrBool1 = [true, false];
+[bool] arrBool2 = [];
+[string] arrString1 = ["Hello", "there"];
+[string] arrString2 = [];
+
+tuple<int, tuple<string, bool>, bool, string> tuple1 = (1, ("that's inner tuple!", true), false, "great tuple!");
+tuple<bool, tuple<bool, int>, string> tuple2 = (false, (true, 42), "I am tuple2");
+
+arrInt1[0] = 4;
+#arrInt1[3] = 5;
+
+println("default int = " + toString(x2));
+println("default bool = " + toString(b3));
+println("default string = " + toString(s2));
+println("default arr = " + toString(arrInt2));
+println(arrString1);
+println(tuple1);
+println(tuple2);

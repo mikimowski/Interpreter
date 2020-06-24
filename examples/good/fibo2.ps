@@ -1,0 +1,51 @@
+# Example of fibonacci presenting usage of reference
+
+[int] get_arr(int size, int val) {
+    int i = 0;
+    [int] arr = [];
+    while i < size {
+        i = i + 1;
+        arr = arr + [val];
+    }
+
+    return arr;
+}
+
+int fib(int n) {
+    int do_fib(int n, [int] dp) {
+        if dp[n] == -1 {
+            dp[n] = do_fib(n - 1, &dp) + do_fib(n - 2, &dp);
+        }
+        return dp[n];
+    }
+
+    int do_fib_ref(int n, [int] dp, int cnt) {
+        cnt = cnt + 1;
+        if dp[n] == -1 {
+            dp[n] = do_fib_ref(n - 1, &dp, &cnt) + do_fib_ref(n - 2, &dp, &cnt);
+        }
+        return dp[n];
+    }
+    
+    int do_fib_no_ref(int n, [int] dp, int cnt) {
+        cnt = cnt + 1;
+        if dp[n] == -1 {
+            dp[n] = do_fib_no_ref(n - 1, dp, &cnt) + do_fib_no_ref(n - 2, dp, &cnt);
+        }
+        return dp[n];
+    }
+
+    [int] dp = get_arr(n + 1, -1);
+    dp[0] = 0;
+    if n > 0 {
+        dp[1] = 1;
+    }
+
+    int cnt1 = 0, cnt2 = 0;
+    println("fib_no_ref: res = " + toString(do_fib_no_ref(n, dp, &cnt1)) + ", #calls = " + toString(cnt1));
+    println("fib_ref: res = " + toString(do_fib_ref(n, &dp, &cnt2)) + ", #calls = " + toString(cnt2));
+
+    return do_fib(n, &dp);
+}
+
+fib(10);

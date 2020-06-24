@@ -1,0 +1,41 @@
+int f([int] arr) {
+    arr[0] = 42;
+    return 0;
+}
+
+int swap(int a, int b) {
+    int tmp = a;
+    a = b;
+    b = tmp;
+    return 0;
+}
+
+println("Example1:");
+[int] arr = [1, 2, 3, 4, 5];
+println("Reference");
+println("before: " + toString(arr));
+f(&arr);
+println("after: " + toString(arr));
+
+println("No reference");
+arr = [1, 2, 3, 4, 5];
+println("before: " + toString(arr));
+f(arr);
+println("after: " + toString(arr));
+
+println("");
+println("Example2:");
+println("Reference");
+int a = 0, b = -13;
+println("a = " + toString(a) + ", b = " + toString(b));
+println("a 'swap' b");
+swap(&a, &b);
+println("a = " + toString(a) + ", b = " + toString(b));
+
+
+println("No reference");
+int a = 0, b = -13;
+println("a = " + toString(a) + ", b = " + toString(b));
+println("a 'swap' b");
+swap(a, b);
+println("a = " + toString(a) + ", b = " + toString(b));

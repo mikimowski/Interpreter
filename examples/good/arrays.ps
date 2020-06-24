@@ -1,0 +1,52 @@
+### Simple ###
+
+#string x = "not_an_array";
+[string] string_arr = ["number", "42"];
+println(string_arr[0] + " " + string_arr[1]);
+
+[int] x;
+[int] arr1 = [1, 2, 3];
+[int] arr2 = [3, 2, 1];
+
+x = arr1 + arr2;                         # x == [1, 2, 3, 3, 2, 1]
+arr1 = arr1 + arr2;                      # arr1 == [1, 2, 3, 3, 2, 1], x == [1, 2, 3, 3, 2, 1] - x not changed
+
+arr2 = arr2 + [2];                       # arr2 == [3, 2, 1, 2];
+# arr2 = arr2 + 2;                        # Incorrect usage
+
+
+
+### Functions and Arrays ###
+
+## Example1
+
+int f([int] arr) {
+    arr[0] = arr[0] + 1;
+    return 0;
+}
+
+[int] arr3 = [1, 2, 3];
+f(arr3);
+# arr3 == [1, 2, 3]
+println(arr3);
+
+f(&arr3);
+# arr3 == [2, 2, 3]
+println(arr3);
+
+
+
+## Example 2
+
+[int] f2([int] arr) {
+    arr[0] = arr[0] + 1;
+    return arr;
+}
+
+[int] arr = [1, 2, 3];
+[int] res = f2(arr);
+# arr == [1, 2, 3]
+# res == [2, 2, 3]
+
+println(arr);
+println(res);

@@ -1,0 +1,34 @@
+# Simple recursive fibonacci example using dp
+
+[int] get_arr(int size, int val) {
+    int i = 0;
+    [int] arr = [];
+    while i < size {
+        i = i + 1;
+        arr = arr + [val];
+    }
+
+    return arr;
+}
+
+int fib(int n) {
+    int do_fib(int n, [int] dp) {
+        if dp[n] == -1 {
+            dp[n] = do_fib(n - 1, &dp) + do_fib(n - 2, &dp);
+        }
+        return dp[n];
+    }
+
+    [int] dp = get_arr(n + 1, -1);
+    dp[0] = 0;
+    if n > 0 {
+        dp[1] = 1;
+    }
+    return do_fib(n, &dp);
+}
+
+int n = 10;
+while n >= 0 {
+    println("fib(" + toString(n) + ") = " + toString(fib(n)));
+    n = n - 1;
+}

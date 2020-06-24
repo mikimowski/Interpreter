@@ -1,0 +1,42 @@
+int i = 14;
+println("while example:");
+println("starting at: " + toString(i));
+
+# Skips all the numbers divisible by 2, and stops at first number divisible by 3 by not divisble by 2
+while true {
+    i = i - 1;
+
+    if i % 2 == 0 {
+        println("skipping: " + toString(i));
+        continue;
+    }
+    if i % 3 == 0 {
+        break;
+    }
+}
+println("found: " + toString(i));
+
+
+
+println("");
+println("return example:");
+# Skips all the numbers divisible by 2, and returns first number divisible by 3 by not divisble by 2, or 1 if no positive solution was found
+int f(int n) {
+    while n > 1 {
+        n = n - 1;
+        if n % 2 == 0 {
+            println("skipping: " + toString(n));
+            continue;
+        }
+        if n % 3 == 0 {
+            return n;
+        }
+    }
+
+    return n;
+}
+
+println("starting at: " + toString(14));
+println("found: " + toString(f(14)));
+println("starting at: " + toString(3));
+println("found: " + toString(f(3)));

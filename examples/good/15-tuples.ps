@@ -1,0 +1,40 @@
+# Some nested types
+tuple<int, tuple<int, int>> tup = (1, (2, 3));
+println(tup[1]);           # '(2, 3)'
+
+tuple<int, tuple<string, bool>, bool> tup = (1, ("hello", false), true);
+println(tup[1][1]);        # 'false'
+
+# Unpacking
+println("");
+println("Unpacking:");
+[int] arr = [0, 0];
+<arr[0], arr[1]> = (42, 13);
+
+print("(42, 13) -> ");
+print("arr = " + toString(arr));
+
+# Both new variable or existing one can be used
+bool b;
+<int i, string s, b> = (42, "hello", true);
+println("");
+print("(42, 'hello', true) -> ");
+print("i = " + toString(i) + ", ");
+print(" s = " + toString(s) + ", ");
+println(" b = " + toString(b));
+
+
+tuple<string, string> make_pair(string s1, string s2) {
+    return (s1, s2);
+}
+
+tuple<string, string> my_pair = make_pair("potato", "patato");
+println(my_pair);
+
+
+# parsed by incorrect -> for typechecker
+# tuple <int, string> tup = (1, 2);
+
+# tup[0] = 3;                      # immutable!
+
+# tuple <int, int> tup = (1, "hello"); # incorrect type

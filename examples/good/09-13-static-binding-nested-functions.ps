@@ -1,0 +1,33 @@
+string var = "var value before func declaration";
+
+int f() {
+    println("##### START f #####");
+
+    println(var);
+
+    string var = "var value declared inside function";
+
+    int f() {
+        println("f declared inside itself!");
+        println(var);
+        return 0;
+    }
+
+    f();
+
+    println("***** END f *****");
+    println("");
+
+    return 13;
+    println("Shouldn't be here...");
+}
+
+f();
+
+var = "var value after func declaration";
+f();
+
+string var = "var redeclared after func call";
+println(var);
+println("");
+f();
